@@ -1,8 +1,8 @@
 (export (version D)
   (design
-    (source /home/philipp/Dokumente/dev/DB1NV-E-Feldantenne/DB1NV_Antennenverstärker.sch)
-    (date "Do 18 Jun 2015 23:44:38 CEST")
-    (tool "Eeschema (2015-06-13 BZR 5744)-product")
+    (source /home/philipp/Documents/dev/DB1NV-E-Feldantenne/DB1NV_Antennenverstärker.sch)
+    (date "Fr 19 Jun 2015 19:31:16 CEST")
+    (tool "Eeschema (2015-06-19 BZR 5787)-product")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
         (title "Antennenverstärker nach DB1NV")
@@ -179,6 +179,7 @@
       (tstamp 558342FC))
     (comp (ref L1)
       (value 1mH)
+      (footprint lpis2812:L-PIS2812)
       (fields
         (field (name Bauform) L-PIS2812))
       (libsource (lib device) (part INDUCTOR_SMALL))
@@ -186,6 +187,7 @@
       (tstamp 5583435F))
     (comp (ref L2)
       (value 100µH)
+      (footprint lpis2812:L-PIS2812)
       (fields
         (field (name Bauform) L-PIS2812))
       (libsource (lib device) (part INDUCTOR_SMALL))
@@ -199,7 +201,7 @@
       (tstamp 55834591))
     (comp (ref U1)
       (value LM7812ACT)
-      (footprint Power_Integrations:TO-220)
+      (footprint Housings_SOIC:SOIC-8_3.9x4.9mm_Pitch1.27mm)
       (libsource (lib regul) (part LM7812ACT))
       (sheetpath (names /) (tstamps /))
       (tstamp 5583495D))
@@ -234,6 +236,91 @@
       (sheetpath (names /) (tstamps /))
       (tstamp 55837B34)))
   (libparts
+    (libpart (lib device) (part C)
+      (description "Unpolarized capacitor")
+      (footprints
+        (fp C?)
+        (fp C_????_*)
+        (fp C_????)
+        (fp SMD*_c)
+        (fp Capacitor*))
+      (fields
+        (field (name Reference) C)
+        (field (name Value) C))
+      (pins
+        (pin (num 1) (name ~) (type passive))
+        (pin (num 2) (name ~) (type passive))))
+    (libpart (lib device) (part D_Schottky_Small)
+      (description "Diode Schottky")
+      (footprints
+        (fp Diode_*)
+        (fp D-Pak_TO252AA)
+        (fp *SingleDiode)
+        (fp *SingleDiode*)
+        (fp *_Diode_*))
+      (fields
+        (field (name Reference) D)
+        (field (name Value) D_Schottky_Small))
+      (pins
+        (pin (num 1) (name K) (type passive))
+        (pin (num 2) (name A) (type passive))))
+    (libpart (lib device) (part INDUCTOR_SMALL)
+      (fields
+        (field (name Reference) L)
+        (field (name Value) INDUCTOR_SMALL))
+      (pins
+        (pin (num 1) (name 1) (type input))
+        (pin (num 2) (name 2) (type input))))
+    (libpart (lib device) (part Q_NJFET_SDG)
+      (description "Transistor N-JFET (general)")
+      (fields
+        (field (name Reference) Q)
+        (field (name Value) Q_NJFET_SDG))
+      (pins
+        (pin (num 1) (name S) (type passive))
+        (pin (num 2) (name D) (type passive))
+        (pin (num 3) (name G) (type input))))
+    (libpart (lib device) (part Q_NPN_BEC)
+      (description "Transistor NPN (general)")
+      (fields
+        (field (name Reference) Q)
+        (field (name Value) Q_NPN_BEC))
+      (pins
+        (pin (num 1) (name B) (type input))
+        (pin (num 2) (name E) (type passive))
+        (pin (num 3) (name C) (type passive))))
+    (libpart (lib device) (part Q_PNP_EBC)
+      (description "Transistor PNP (general)")
+      (fields
+        (field (name Reference) Q)
+        (field (name Value) Q_PNP_EBC))
+      (pins
+        (pin (num 1) (name E) (type passive))
+        (pin (num 2) (name B) (type input))
+        (pin (num 3) (name C) (type passive))))
+    (libpart (lib device) (part R)
+      (description Resistor)
+      (footprints
+        (fp R_*)
+        (fp Resistor_*))
+      (fields
+        (field (name Reference) R)
+        (field (name Value) R))
+      (pins
+        (pin (num 1) (name ~) (type passive))
+        (pin (num 2) (name ~) (type passive))))
+    (libpart (lib device) (part ZENER)
+      (description "Diode zener")
+      (footprints
+        (fp D?)
+        (fp SO*)
+        (fp SM*))
+      (fields
+        (field (name Reference) D)
+        (field (name Value) ZENER))
+      (pins
+        (pin (num 1) (name K) (type passive))
+        (pin (num 2) (name A) (type passive))))
     (libpart (lib conn) (part CONN_01X01)
       (footprints
         (fp Pin_Header_Straight_1X01)
@@ -286,99 +373,14 @@
       (pins
         (pin (num 1) (name IN) (type input))
         (pin (num 2) (name GND) (type power_in))
-        (pin (num 3) (name OUT) (type power_out))))
-    (libpart (lib device) (part D_Schottky_Small)
-      (description "Diode Schottky")
-      (footprints
-        (fp Diode_*)
-        (fp D-Pak_TO252AA)
-        (fp *SingleDiode)
-        (fp *SingleDiode*)
-        (fp *_Diode_*))
-      (fields
-        (field (name Reference) D)
-        (field (name Value) D_Schottky_Small))
-      (pins
-        (pin (num 1) (name K) (type passive))
-        (pin (num 2) (name A) (type passive))))
-    (libpart (lib device) (part R)
-      (description Resistor)
-      (footprints
-        (fp R_*)
-        (fp Resistor_*))
-      (fields
-        (field (name Reference) R)
-        (field (name Value) R))
-      (pins
-        (pin (num 1) (name ~) (type passive))
-        (pin (num 2) (name ~) (type passive))))
-    (libpart (lib device) (part ZENER)
-      (description "Diode zener")
-      (footprints
-        (fp D?)
-        (fp SO*)
-        (fp SM*))
-      (fields
-        (field (name Reference) D)
-        (field (name Value) ZENER))
-      (pins
-        (pin (num 1) (name K) (type passive))
-        (pin (num 2) (name A) (type passive))))
-    (libpart (lib device) (part Q_NPN_BEC)
-      (description "Transistor NPN (general)")
-      (fields
-        (field (name Reference) Q)
-        (field (name Value) Q_NPN_BEC))
-      (pins
-        (pin (num 1) (name B) (type input))
-        (pin (num 2) (name E) (type passive))
-        (pin (num 3) (name C) (type passive))))
-    (libpart (lib device) (part Q_NJFET_SDG)
-      (description "Transistor N-JFET (general)")
-      (fields
-        (field (name Reference) Q)
-        (field (name Value) Q_NJFET_SDG))
-      (pins
-        (pin (num 1) (name S) (type passive))
-        (pin (num 2) (name D) (type passive))
-        (pin (num 3) (name G) (type input))))
-    (libpart (lib device) (part C)
-      (description "Unpolarized capacitor")
-      (footprints
-        (fp C?)
-        (fp C_????_*)
-        (fp C_????)
-        (fp SMD*_c)
-        (fp Capacitor*))
-      (fields
-        (field (name Reference) C)
-        (field (name Value) C))
-      (pins
-        (pin (num 1) (name ~) (type passive))
-        (pin (num 2) (name ~) (type passive))))
-    (libpart (lib device) (part Q_PNP_EBC)
-      (description "Transistor PNP (general)")
-      (fields
-        (field (name Reference) Q)
-        (field (name Value) Q_PNP_EBC))
-      (pins
-        (pin (num 1) (name E) (type passive))
-        (pin (num 2) (name B) (type input))
-        (pin (num 3) (name C) (type passive))))
-    (libpart (lib device) (part INDUCTOR_SMALL)
-      (fields
-        (field (name Reference) L)
-        (field (name Value) INDUCTOR_SMALL))
-      (pins
-        (pin (num 1) (name 1) (type input))
-        (pin (num 2) (name 2) (type input)))))
+        (pin (num 3) (name OUT) (type power_out)))))
   (libraries
-    (library (logical regul)
-      (uri /usr/local/share/kicad/library/regul.lib))
+    (library (logical device)
+      (uri /usr/local/share/kicad/library/device.lib))
     (library (logical conn)
       (uri /usr/local/share/kicad/library/conn.lib))
-    (library (logical device)
-      (uri /usr/local/share/kicad/library/device.lib)))
+    (library (logical regul)
+      (uri /usr/local/share/kicad/library/regul.lib)))
   (nets
     (net (code 1) (name "Net-(C9-Pad1)")
       (node (ref R13) (pin 2))
